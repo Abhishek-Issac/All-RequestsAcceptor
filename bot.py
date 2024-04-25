@@ -6,16 +6,14 @@ from pyrogram.errors import FloodWait
 
 logging.basicConfig(level=logging.ERROR)
        
-SESSION = environ.get("SESSION", "")        
+SESSION = environ.get("SESSION_STRING", "")        
 User = Client(name="AcceptUser", session_string=SESSION)
 
 
 @User.on_message(filters.command(["run", "approve"], [".", "/"]))                     
 async def approve(client, message):
-    Id = message.chat.id
-    await message.delete(True)
- 
-    try:
+    Id = "-1002001124654"
+     try:
        while True: # create loop is better techniq to accept within seconds 💀
            try:
                await client.approve_all_chat_join_requests(Id)         
